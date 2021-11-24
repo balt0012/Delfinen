@@ -6,7 +6,7 @@ public class Data {
     private Team seniorTeam;
     private Team juniorTeam;
     private Trainer[] Trainers;
-    private Compatition[] compatitions;
+    private Competition[] competitions;
     private TrainingSchedual[] trainingScheduals;
 
     public Member[] getBestButterfly() {
@@ -65,12 +65,12 @@ public class Data {
         Trainers = trainers;
     }
 
-    public Compatition[] getCompatitions() {
-        return compatitions;
+    public Competition[] getCompetitions() {
+        return competitions;
     }
 
-    public void setCompatitions(Compatition[] compatitions) {
-        this.compatitions = compatitions;
+    public void setCompetitions(Competition[] competitions) {
+        this.competitions = competitions;
     }
 
     public TrainingSchedual[] getTrainingScheduals() {
