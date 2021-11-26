@@ -12,6 +12,7 @@ public class Training {
 
     public void registerResultForSwimmer() {
         for (int i = 0; i < team.getRoster().size(); i++) {
+
             // create trainingResult object here and add to result Arraylist.
         }
     }

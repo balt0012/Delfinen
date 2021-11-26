@@ -13,6 +13,7 @@ public class DatabaseClubDisciplines {
 
         if (!checkForDuplicates(discipline)) {
             clubDisciplines.add(discipline.toLowerCase(Locale.ROOT));
+            System.out.println("Discipline added.");
         }
 
     }
