@@ -3,15 +3,16 @@ public class Member {
     private boolean priceYearlyIsPaid;
     private boolean isActive;
     private int age;
-    private String memberID;
+    private int memberID;
     private String name;
     private boolean isPricePaid;
 
-    public Member(int age, String memberID, boolean isActive, String name) {
+    public Member(int age, int memberID, boolean isActive, String name) {
         this.age = age;
         this.memberID = memberID;
         this.isActive = isActive;
         this.name = name;
+        setPriceYearly();
     }
 
     public void setPriceYearly() {
@@ -43,5 +44,13 @@ public class Member {
 
     public String getName() {
         return name;
+    }
+
+    public double getPriceYearly() {
+        return priceYearly;
+    }
+
+    public boolean PriceYearlyIsPaid() {
+        return priceYearlyIsPaid;
     }
 }
