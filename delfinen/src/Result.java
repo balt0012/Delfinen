@@ -1,14 +1,16 @@
 public class Result
 {
-    private Member competitor;
     private double competitionTime;
     private String discipline;
+    private int date;
+    private boolean competition;
 
-    public Result(Member competitor, double competitionTime, String discipline)
+    public Result(Member competitor, double competitionTime, String discipline, int date, boolean competition)
     {
-        this.competitor = competitor;
         this.competitionTime = competitionTime;
         this.discipline = discipline;
+        this.date = date;
+        this.competition = competition;
     }
 
 

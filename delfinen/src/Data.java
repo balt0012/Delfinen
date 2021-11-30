@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Data {
     private static ArrayList<Member> members = new ArrayList<>();
@@ -13,13 +16,27 @@ public class Data {
     private static ArrayList<TrainingSchedual> trainingScheduals = new ArrayList<>();
 
 
-    //doesnt work just a placeholder
-    public static int nextMemberID(){
-        return 1;
-    }
-
     public static void addToMembers(Member newMember){
         members.add(newMember);
+        try {
+            File newFile = new File("members/" + newMember.getName() + ".csv");
+            if (!newFile.createNewFile()) {
+                System.out.println("File already exists");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter writer = new FileWriter("members/" + newMember.getName() + ".csv");
+            //toString is to be added
+            writer.write(newMember.toString());
+            writer.close();
+            System.out.println("new member has been added!");
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
     }
 
     public static int getExpectedIncome(){
@@ -32,55 +49,65 @@ public class Data {
         return expectedIncome;
     }
 
-    public static Member[] getBestButterfly() {
+    public static int getMembersInDebt(){
+        int membersInDebt = 0;
+        for(Member member : members){
+            if (!member.PriceYearlyIsPaid()){
+                membersInDebt++;
+            }
+        }
+        return membersInDebt;
+    }
+
+    public static ArrayList<Member> getBestButterfly() {
         return bestButterfly;
     }
 
     public static void setBestButterfly(Member[] bestButterfly) {
-        this.bestButterfly = bestButterfly;
+        bestButterfly = bestButterfly;
     }
 
-    public static Member[] getBestCrawl() {
+    public static ArrayList<Member> getBestCrawl() {
         return bestCrawl;
     }
 
     public static void setBestCrawl(Member[] bestCrawl) {
-        this.bestCrawl = bestCrawl;
+        bestCrawl = bestCrawl;
     }
 
-    public static Member[] getBestBackcrawl() {
+    public static ArrayList<Member> getBestBackcrawl() {
         return bestBackcrawl;
     }
 
     public static void setBestBackcrawl(Member[] bestBackcrawl) {
-        this.bestBackcrawl = bestBackcrawl;
+        bestBackcrawl = bestBackcrawl;
     }
 
-    public static Member[] getBestBreaststroke() {
+    public static ArrayList<Member> getBestBreaststroke() {
         return bestBreaststroke;
     }
 
     public static void setBestBreaststroke(Member[] bestBreaststroke) {
-        this.bestBreaststroke = bestBreaststroke;
+        bestBreaststroke = bestBreaststroke;
     }
 
-    public static Team getSeniorTeam() {
+    public static ArrayList<Team> getSeniorTeam() {
         return seniorTeam;
     }
 
     public static void setSeniorTeam(Team seniorTeam) {
-        this.seniorTeam = seniorTeam;
+        seniorTeam = seniorTeam;
     }
 
-    public static Team getJuniorTeam() {
+    public static ArrayList<Team> getJuniorTeam() {
         return juniorTeam;
     }
 
     public static void setJuniorTeam(Team juniorTeam) {
-        this.juniorTeam = juniorTeam;
+        juniorTeam = juniorTeam;
     }
 
-    public static Trainer[] getTrainers() {
+    public static ArrayList<Trainer> getTrainers() {
         return trainers;
     }
 
@@ -88,20 +115,20 @@ public class Data {
         trainers = trainers;
     }
 
-    public static Competition[] getCompetitions() {
+    public static ArrayList<Competition> getCompetitions() {
         return competitions;
     }
 
     public static void setCompetitions(Competition[] competitions) {
-        this.competitions = competitions;
+        competitions = competitions;
     }
 
-    public static TrainingSchedual[] getTrainingScheduals() {
+    public static ArrayList<TrainingSchedual> getTrainingScheduals() {
         return trainingScheduals;
     }
 
     public static void setTrainingScheduals(TrainingSchedual[] trainingScheduals) {
-        this.trainingScheduals = trainingScheduals;
+        trainingScheduals = trainingScheduals;
     }
 
     public static ArrayList<Member> getMembers() {

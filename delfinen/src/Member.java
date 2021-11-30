@@ -1,13 +1,16 @@
+import java.util.ArrayList;
+
 public class Member {
     private double priceYearly;
     private boolean priceYearlyIsPaid;
     private boolean isActive;
     private int age;
-    private int memberID;
+    private String memberID;
     private String name;
     private boolean isPricePaid;
+    private ArrayList<Result> results = new ArrayList<>();
 
-    public Member(int age, int memberID, boolean isActive, String name) {
+    public Member(int age, String memberID, boolean isActive, String name) {
         this.age = age;
         this.memberID = memberID;
         this.isActive = isActive;
@@ -52,5 +55,11 @@ public class Member {
 
     public boolean PriceYearlyIsPaid() {
         return priceYearlyIsPaid;
+    }
+
+    @Override
+    //to be added
+    public String toString() {
+        return "new member";
     }
 }

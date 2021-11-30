@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class GenerateID {
 
-    public String generateID() {
+    public static String generateID() {
         Random random = new Random();
         int lengthID = 5;
         String id = "#";
