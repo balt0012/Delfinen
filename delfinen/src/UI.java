@@ -51,10 +51,6 @@ public class UI {
         } while (menuOption != 0);
     }
 
-
-
-
-
     public static double inputTime() {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;

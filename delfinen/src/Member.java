@@ -46,12 +46,24 @@ public class Member {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getPriceYearly() {
         return priceYearly;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
     }
 
     public boolean PriceYearlyIsPaid() {
@@ -100,6 +112,28 @@ public class Member {
             System.out.println("\n" + (i+1) + " " + Data.getMembers().toArray()[i].toString());
         }
         Member memberToEdit = (Member) Data.getMembers().toArray()[scanner.nextInt()];
+        System.out.println("what do you want to edit: 1.active 2.age 3.name");
+        int varToEdit = scanner.nextInt();
+        do {
+            if (varToEdit == 1){
+                if(memberToEdit.getIsActive()){
+                    memberToEdit.setActive(false);
+                    System.out.println("member activity switched");
+                } else {
+                    memberToEdit.setActive(true);
+                    System.out.println("member activity switched");
+                }
+            }else if (varToEdit == 2){
+                System.out.println("what is the age of the member?");
+                int age = scanner.nextInt();
+                memberToEdit.setAge(age);
+            }else if (varToEdit == 3){
+                System.out.println("what is the name of the member?");
+                String name = scanner.nextLine();
+                memberToEdit.setName(name);
+            }
+        } while (varToEdit != 0);
+        Data.addToMembers(memberToEdit);
     }
 
 

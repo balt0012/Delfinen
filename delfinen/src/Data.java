@@ -61,9 +61,7 @@ public class Data {
         return membersInDebt;
     }
 
-
     public static ArrayList<Member> getMembers() {
-
         return members;
     }
 
