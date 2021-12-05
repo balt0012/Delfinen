@@ -35,10 +35,10 @@ public class CompetitiveSwimmer extends Member {
 
     public void addCoach(Coach coach) {
         this.coach = coach.getName();
-        this.coachID = coach.getCoachID();
+        this.coachID = coach.getCoachId();
     }
 
-    public boolean addSwimmerToDiscipline(String discipline, ValidateDisciplines validateDisciplines) {
+    /*public boolean addSwimmerToDiscipline(String discipline, ValidateDisciplines validateDisciplines) {
         boolean swimmerIsAdded = false;
         // assigns a swimmer to a discipline if the swimmer is not already active within that discipline and the discipline is active in the club.
         if (!validateDisciplines.swimmerIsActiveInDiscipline(discipline, activeDisciplinesSwimmer) && validateDisciplines.validateDiscipline(discipline)) {
@@ -46,7 +46,7 @@ public class CompetitiveSwimmer extends Member {
             swimmerIsAdded = true;
         }
         return swimmerIsAdded;
-    }
+    }*/
 
     public void removeSwimmerFromDiscipline(String discipline) {
         for (int i = 0; i < activeDisciplinesSwimmer.size(); i++) {

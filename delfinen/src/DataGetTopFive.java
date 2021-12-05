@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class DataGetTopFive {
     SwimmerComparator swimmerComparator = new SwimmerComparator();
-    public ArrayList<CompetitiveSwimmer> findTop5InDiscipline(String discipline, ArrayList<CompetitiveSwimmer> swimmersActiveInDiscipline) {
+    /*public ArrayList<CompetitiveSwimmer> findTop5InDiscipline(String discipline, ArrayList<CompetitiveSwimmer> swimmersActiveInDiscipline) {
         ArrayList<Training> bestTimesInDisciplineBySwimmers = getBestTimeInDisciplineFromSwimmer(discipline, swimmersActiveInDiscipline);
         Collections.sort(bestTimesInDisciplineBySwimmers, swimmerComparator);
         ArrayList<CompetitiveSwimmer> top5Swimmers = new ArrayList<>();
@@ -12,7 +12,7 @@ public class DataGetTopFive {
             top5Swimmers.add(bestTimesInDisciplineBySwimmers.get(i).getCompetitiveSwimmer());
         }
         return top5Swimmers;
-    }
+    }*/
 
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmersInDiscipline(String discipline, ArrayList<CompetitiveSwimmer> competitiveSwimmers) {
         // method iterates through arraylist of swimmers and adds all swimmer who are active
