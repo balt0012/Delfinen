@@ -15,7 +15,6 @@ public class Data {
     private static ArrayList<Team> juniorTeam = new ArrayList<>();
     private static ArrayList<Trainer> trainers = new ArrayList<>();
     private static ArrayList<Competition> competitions = new ArrayList<>();
-    private static ArrayList<TrainingSchedual> trainingScheduals = new ArrayList<>();
 
 
     public static void addToMembers(Member newMember){

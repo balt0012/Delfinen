@@ -4,7 +4,7 @@ import java.util.Locale;
 
 public class CompetitiveSwimmer extends Member {
     private final ArrayList<Competition> competitions = new ArrayList<>();
-    private final ArrayList<Training> trainingTimes = new ArrayList<>();
+    private final ArrayList<TrainingResult> trainingTimes = new ArrayList<>();
     private final ArrayList<String> activeDisciplinesSwimmer = new ArrayList<>();
     private String coach;
     private String coachID;
@@ -14,7 +14,7 @@ public class CompetitiveSwimmer extends Member {
         super(age, memberID, isActive, name);
     }
 
-    public ArrayList<Training> getTrainingTimes() {
+    public ArrayList<TrainingResult> getTrainingTimes() {
         return trainingTimes;
     }
 
@@ -26,9 +26,9 @@ public class CompetitiveSwimmer extends Member {
         competitions.add(competition);
     }
 
-    public void addTraining(Training training) {
+    public void addTraining(TrainingResult trainingResult) {
         SwimmerComparator swimmerComparator = new SwimmerComparator();
-        trainingTimes.add(training);
+        trainingTimes.add(trainingResult);
         // crucial that trainingTimes Arraylist is sorted by fastest times if this class is to work with DataGetTopFive class.
         Collections.sort(trainingTimes, swimmerComparator);
     }
@@ -38,15 +38,15 @@ public class CompetitiveSwimmer extends Member {
         this.coachID = coach.getCoachId();
     }
 
-    /*public boolean addSwimmerToDiscipline(String discipline, ValidateDisciplines validateDisciplines) {
+    public boolean addSwimmerToDiscipline(String discipline, ActiveDisciplinesClub activeDisciplinesClub) {
         boolean swimmerIsAdded = false;
         // assigns a swimmer to a discipline if the swimmer is not already active within that discipline and the discipline is active in the club.
-        if (!validateDisciplines.swimmerIsActiveInDiscipline(discipline, activeDisciplinesSwimmer) && validateDisciplines.validateDiscipline(discipline)) {
+        if (swimmerIsActiveInDiscipline(discipline) && !activeDisciplinesClub.validateDiscipline(discipline)) {
             activeDisciplinesSwimmer.add(discipline);
             swimmerIsAdded = true;
         }
         return swimmerIsAdded;
-    }*/
+    }
 
     public void removeSwimmerFromDiscipline(String discipline) {
         for (int i = 0; i < activeDisciplinesSwimmer.size(); i++) {
@@ -68,6 +68,10 @@ public class CompetitiveSwimmer extends Member {
             }
         }
         return isActiveInDiscipline;
+    }
+
+    public void addTrainingResult(TrainingResult trainingResult) {
+        trainingTimes.add(trainingResult);
     }
 }
 

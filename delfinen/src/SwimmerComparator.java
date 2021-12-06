@@ -1,10 +1,10 @@
 import java.util.Comparator;
 
-public class SwimmerComparator implements Comparator<Training> {
+public class SwimmerComparator implements Comparator<TrainingResult> {
 
     @Override
-    public int compare(Training o1, Training o2) {
-        // returns 0 if o1 is equal to o2. 1 if o1 is higher than o2. -1 if
+    public int compare(TrainingResult o1, TrainingResult o2) {
+        // returns 0 if o1 is equal to o2. 1 if o1 is higher than o2. -1 if o1 is lower than o2.
         if (o1.getTime() == o2.getTime()) {
             return 0;
         } else if (o1.getTime() > o2.getTime()) {

@@ -3,6 +3,7 @@ import java.util.Random;
 public class GenerateID {
 
     public static String generateID() {
+        // can be used for coaches and members.
         Random random = new Random();
         int lengthID = 5;
         String id = "#";

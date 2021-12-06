@@ -50,6 +50,10 @@ public class Member {
         return name;
     }
 
+    public String getMemberID() {
+        return memberID;
+    }
+
     public double getPriceYearly() {
         return priceYearly;
     }
