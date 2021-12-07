@@ -12,8 +12,6 @@ public class UserInputTime {
         return minutes + ((float)seconds/100);
     }
 
-
-
     public int minutes() {
         boolean loop = true;
         int userInput = 0;

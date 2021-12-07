@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Data {
@@ -60,6 +61,22 @@ public class Data {
         return membersInDebt;
     }
 
+    public static void registerPayment(String memberID) {
+        boolean matchIsFound = false;
+
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getMemberID().equals(memberID)) {
+                matchIsFound = true;
+                members.get(i).setPriceYearlyIsPaid(true);
+                System.out.println("Payment on " + members.get(i).getPriceYearly() + " dkk from " + members.get(i).getName() + "has been registered.");
+                break;
+            }
+        }
+        if (!matchIsFound) {
+            System.out.println("Error. Invalid memberID.");
+        }
+    }
+
 
     public static ArrayList<Member> getMembers() {
 
@@ -69,4 +86,31 @@ public class Data {
     public static void setMembers(ArrayList<Member> members) {
         Data.members = members;
     }
+
+    public static void addCoaches() {
+        boolean loop = true;
+        int numberOfCoachesToAdd = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the amount of coaches you would like to add");
+
+        while (loop) {
+            System.out.println(">");
+            try {
+                numberOfCoachesToAdd = scanner.nextInt();
+                loop = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Input must be a number with no decimals.");
+            }
+        }
+
+        for (int i = 0; i < numberOfCoachesToAdd; i++) {
+            trainers.add(Trainer.createTrainer());
+        }
+    }
+
+    public static ArrayList<Trainer> getTrainers() {
+        return trainers;
+    }
+
+
 }

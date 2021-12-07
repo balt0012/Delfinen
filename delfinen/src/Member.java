@@ -13,7 +13,7 @@ public class Member {
 
     public Member(int age, String memberID, boolean isActive, String name) {
         this.age = age;
-        this.memberID = memberID;
+        this.memberID = GenerateID.generateID();
         this.isActive = isActive;
         this.name = name;
         setPriceYearly();
@@ -104,6 +104,10 @@ public class Member {
             System.out.println("\n" + (i+1) + " " + Data.getMembers().toArray()[i].toString());
         }
         Member memberToEdit = (Member) Data.getMembers().toArray()[scanner.nextInt()];
+    }
+
+    public void setPriceYearlyIsPaid(boolean paymentStatus) {
+        this.priceYearlyIsPaid = paymentStatus;
     }
 
 
