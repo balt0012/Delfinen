@@ -62,7 +62,7 @@ public class UI {
         } while (menuOption != 0);
     }
 
-    public static void trainingAndCompetitionMenu() {
+    public static void trainingAndCompetitionMenu(ActiveDisciplinesClub activeDisciplinesClub) {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         String menuOption;
@@ -74,8 +74,10 @@ public class UI {
             menuOption = scanner.nextLine();
 
             if (menuOption.equals("1")) {
-                // insert method for creating training here
+
+                Data.addTraining(new Training(activeDisciplinesClub.inputDiscipline(), Data.receiveTeam()));
                 loop = false;
+
             } else if (menuOption.equals("2")) {
                 // insert method for creating competition here
                 loop = false;

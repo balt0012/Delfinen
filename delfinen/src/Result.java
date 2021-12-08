@@ -2,15 +2,13 @@ public class Result
 {
     private double competitionTime;
     private String discipline;
-    private int date;
-    private boolean competition;
+    private CompetitiveSwimmer competitiveSwimmer;
 
-    public Result(Member competitor, double competitionTime, String discipline, int date, boolean competition)
+    public Result(CompetitiveSwimmer competitiveSwimmer, double competitionTime, String discipline)
     {
         this.competitionTime = competitionTime;
         this.discipline = discipline;
-        this.date = date;
-        this.competition = competition;
+        this.competitiveSwimmer = competitiveSwimmer;
     }
 
 

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ActiveDisciplinesClub {
     private ArrayList<String> clubDisciplines = new ArrayList<>();
 
+
     public ActiveDisciplinesClub() {
         clubDisciplines.add("backstroke");
         clubDisciplines.add("butterfly");
@@ -15,7 +16,7 @@ public class ActiveDisciplinesClub {
 
     public void addDiscipline() {
         System.out.println("Please enter the discipline you would like to add:");
-        clubDisciplines.add(inputDiscipline());
+        clubDisciplines.add(inputNewDiscipline());
     }
 
     public boolean validateDiscipline(String discipline) {
@@ -31,7 +32,7 @@ public class ActiveDisciplinesClub {
         return isADuplicate;
     }
 
-    public String inputDiscipline() {
+    public String inputNewDiscipline() {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         String userInput = null;
@@ -46,5 +47,24 @@ public class ActiveDisciplinesClub {
             }
         }
         return userInput;
+    }
+
+    public String inputDiscipline() {
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        String userInput = null;
+
+        while (loop) {
+
+            System.out.println(">");
+            userInput = scanner.nextLine().toLowerCase(Locale.ROOT);
+
+            if (validateDiscipline(userInput)) {
+                loop = false;
+            }
+        }
+        return userInput;
+
+
     }
 }

@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 public class Data {
     private static ArrayList<Member> members = new ArrayList<>();
+    private static ArrayList<CompetitiveSwimmer> competitiveSwimmers = new ArrayList<>();
     private static Team seniorTeam;
     private static Team juniorTeam;
     private static ArrayList<Trainer> trainers = new ArrayList<>();
     private static ArrayList<Competition> competitions = new ArrayList<>();
+    private static ArrayList<Training> trainings = new ArrayList<>();
 
 
     public static void addToMembers(Member newMember){
@@ -36,6 +38,10 @@ public class Data {
         }
     }
 
+    public static void addCompetitiveSwimmer(CompetitiveSwimmer competitiveSwimmer) {
+        competitiveSwimmers.add(competitiveSwimmer);
+    }
+
     public static int getExpectedIncome(){
         int expectedIncome = 0;
         for(Member member : members){
@@ -54,6 +60,31 @@ public class Data {
             }
         }
         return membersInDebt;
+    }
+
+    public static Team receiveTeam() {
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        String userInputTeam;
+        Team team = null;
+
+        System.out.println("Please enter the team:\n 1 - Junior Team\n 2 - Senior Team");
+
+        while (loop) {
+            System.out.println(">");
+            userInputTeam = scanner.nextLine();
+
+            if (userInputTeam.equals("1")) {
+                team = juniorTeam;
+                loop = false;
+            } else if (userInputTeam.equals("2")) {
+                team = seniorTeam;
+                loop = false;
+            } else {
+                System.out.println("Invalid input. Try again.");
+            }
+        }
+        return team;
     }
 
     public static String receiveMemberID() {
@@ -101,6 +132,10 @@ public class Data {
         }
     }
 
+    public static void addTraining(Training training) {
+        trainings.add(training);
+    }
+
 
     public static ArrayList<Member> getMembers() {
 
@@ -136,6 +171,10 @@ public class Data {
         return trainers;
     }
 
+    public static ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers() {
+        return competitiveSwimmers;
+    }
+
     public static void addMemberToTeam(Team seniorTeam, Team juniorTeam, CompetitiveSwimmer competitiveSwimmer) {
         if (competitiveSwimmer.getAge() > 18 ) {
             seniorTeam.getRoster().add(competitiveSwimmer);
@@ -143,6 +182,8 @@ public class Data {
             juniorTeam.getRoster().add(competitiveSwimmer);
         }
     }
+
+
 
     public static void setSeniorTeam(Team team) {
         seniorTeam = team;

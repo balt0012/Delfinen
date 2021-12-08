@@ -75,6 +75,7 @@ public class CompetitiveSwimmer extends Member {
         InputCreateMember inputCreateMember = new InputCreateMember();
         CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer(inputCreateMember.receiveAge(), GenerateID.generateID(), inputCreateMember.receiveActiveStatus(), inputCreateMember.receiveName());
         Data.addToMembers(competitiveSwimmer);
+        Data.addCompetitiveSwimmer(competitiveSwimmer);
         Data.addMemberToTeam(Data.getSeniorTeam(), Data.getJuniorTeam(), competitiveSwimmer);
 
     }
