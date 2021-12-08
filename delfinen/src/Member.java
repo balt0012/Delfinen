@@ -70,30 +70,10 @@ public class Member {
         return resultString.toString();
     }
 
-    public static void addMember(){
-        Scanner scanner = new Scanner(System.in);
-        boolean isActive = false;
-        String id = GenerateID.generateID();
-        String active;
-        System.out.println("what is the name of the new member?");
-        String name = scanner.nextLine();
-        System.out.println("what is the age of the new member?");
-        int age = scanner.nextInt();
-        do {
-            System.out.println("is the member active? (y/n)");
-            scanner.nextLine();
-            active = scanner.nextLine();
-            if (active.equals("y")) {
-                isActive = true;
-            } else if (active.equals("n")) {
-                isActive = false;
-            } else {
-                System.out.println("invalid input");
-            }
-        }while (!active.equals("y") && !active.equals("n"));
-
-        Member newMember = new Member(age, id, isActive, name);
-        Data.addToMembers(newMember);
+    public static void createMember(){
+        InputCreateMember inputCreateMember = new InputCreateMember();
+        Member member = new Member(inputCreateMember.receiveAge(), GenerateID.generateID(), inputCreateMember.receiveActiveStatus(), inputCreateMember.receiveName());
+        Data.addToMembers(member);
     }
 
     public static void editMember(){

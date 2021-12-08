@@ -6,14 +6,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Data {
-    private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Member> members = new ArrayList<>();
-    private static ArrayList<Member> bestButterfly = new ArrayList<>();
-    private static ArrayList<Member> bestCrawl = new ArrayList<>();
-    private static ArrayList<Member> bestBackcrawl = new ArrayList<>();
-    private static ArrayList<Member> bestBreaststroke = new ArrayList<>();
-    private static ArrayList<Team> seniorTeam = new ArrayList<>();
-    private static ArrayList<Team> juniorTeam = new ArrayList<>();
+    private static Team seniorTeam;
+    private static Team juniorTeam;
     private static ArrayList<Trainer> trainers = new ArrayList<>();
     private static ArrayList<Competition> competitions = new ArrayList<>();
 
@@ -59,6 +54,35 @@ public class Data {
             }
         }
         return membersInDebt;
+    }
+
+    public static String receiveMemberID() {
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        boolean matchIsFound = false;
+        String userInputID = null;
+
+        System.out.println("Please enter the ID of the customer: ");
+
+        for (int i = 0; i < members.size(); i++) {
+            System.out.println("Name: " + members.get(i).getName() + " ID: " + members.get(i).getMemberID());
+        }
+        while (loop) {
+            System.out.print(">");
+            userInputID = scanner.nextLine();
+
+            for (int i = 0; i < members.size(); i++) {
+                if (userInputID.equals(members.get(i).getMemberID())) {
+                    matchIsFound = true;
+                    loop = false;
+                    break;
+                }
+            }
+            if (!matchIsFound) {
+                System.out.println("Invalid input. Try again.");
+            }
+        }
+        return userInputID;
     }
 
     public static void registerPayment(String memberID) {
@@ -112,5 +136,27 @@ public class Data {
         return trainers;
     }
 
+    public static void addMemberToTeam(Team seniorTeam, Team juniorTeam, CompetitiveSwimmer competitiveSwimmer) {
+        if (competitiveSwimmer.getAge() > 18 ) {
+            seniorTeam.getRoster().add(competitiveSwimmer);
+        } else {
+            juniorTeam.getRoster().add(competitiveSwimmer);
+        }
+    }
 
+    public static void setSeniorTeam(Team team) {
+        seniorTeam = team;
+    }
+
+    public static void setJuniorTeam(Team team) {
+        juniorTeam = team;
+    }
+
+    public static Team getSeniorTeam() {
+        return seniorTeam;
+    }
+
+    public static Team getJuniorTeam() {
+        return juniorTeam;
+    }
 }

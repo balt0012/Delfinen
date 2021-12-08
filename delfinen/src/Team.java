@@ -50,7 +50,6 @@ public class Team {
                     matchIsFound = true;
                 }
             }
-
             if (matchIsFound) {
                 loop = false;
             }

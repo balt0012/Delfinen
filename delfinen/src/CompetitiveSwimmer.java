@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class CompetitiveSwimmer extends Member {
     private final ArrayList<Competition> competitions = new ArrayList<>();
     private final ArrayList<TrainingResult> trainingTimes = new ArrayList<>();
     private final ArrayList<String> activeDisciplinesSwimmer = new ArrayList<>();
-    private String coach;
+    private Trainer trainer;
     private String coachID;
     private String team;
 
@@ -33,9 +34,9 @@ public class CompetitiveSwimmer extends Member {
         Collections.sort(trainingTimes, swimmerComparator);
     }
 
-    public void addCoach(Coach coach) {
-        this.coach = coach.getName();
-        this.coachID = coach.getCoachId();
+    public void addCoach(Trainer trainer) {
+        this.trainer = trainer.getName();
+        this.trainer = trainer.getCoachId();
     }
 
     public boolean addSwimmerToDiscipline(String discipline, ActiveDisciplinesClub activeDisciplinesClub) {
@@ -68,6 +69,14 @@ public class CompetitiveSwimmer extends Member {
             }
         }
         return isActiveInDiscipline;
+    }
+
+    public static void createCompetitiveSwimmer() {
+        InputCreateMember inputCreateMember = new InputCreateMember();
+        CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer(inputCreateMember.receiveAge(), GenerateID.generateID(), inputCreateMember.receiveActiveStatus(), inputCreateMember.receiveName());
+        Data.addToMembers(competitiveSwimmer);
+        Data.addMemberToTeam(Data.getSeniorTeam(), Data.getJuniorTeam(), competitiveSwimmer);
+
     }
 
     public void addTrainingResult(TrainingResult trainingResult) {
