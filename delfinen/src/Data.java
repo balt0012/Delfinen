@@ -200,4 +200,8 @@ public class Data {
     public static Team getJuniorTeam() {
         return juniorTeam;
     }
+
+    public static ArrayList<Competition> getCompetitions() {
+        return competitions;
+    }
 }

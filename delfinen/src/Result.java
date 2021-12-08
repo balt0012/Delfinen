@@ -4,9 +4,9 @@ public class Result
     private String discipline;
     private CompetitiveSwimmer competitiveSwimmer;
 
-    public Result(CompetitiveSwimmer competitiveSwimmer, double competitionTime, String discipline)
+    public Result(CompetitiveSwimmer competitiveSwimmer, String discipline)
     {
-        this.competitionTime = competitionTime;
+        this.competitionTime = new UserInputTime().receiveTime();
         this.discipline = discipline;
         this.competitiveSwimmer = competitiveSwimmer;
     }

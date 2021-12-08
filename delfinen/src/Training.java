@@ -8,6 +8,7 @@ public class Training {
     public Training(String discipline, Team team) {
         this.discipline = discipline;
         this.team = team;
+        registerResultForSwimmer();
     }
 
     public void registerResultForSwimmer() {

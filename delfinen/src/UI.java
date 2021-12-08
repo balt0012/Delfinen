@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class UI {
+    private ActiveDisciplinesClub activeDisciplinesClub;
+
 
     public static void programSetup() {
         // team and coaches should be created first before main menu.
@@ -9,17 +11,21 @@ public class UI {
         Data.setSeniorTeam(Team.createTeam("Senior Team"));
     }
 
-    public static void mainMenu(){
+    public static void mainMenu(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive){
         Scanner scanner = new Scanner(System.in);
         int menuOption;
         do {
-            System.out.println("what do you want to do? (1.economy 2.member management)");
+            System.out.println("what do you want to do? (1.economy 2.member management 3. Training and Competition management)");
             menuOption = scanner.nextInt();
             if (menuOption == 1) {
                 economicMenu();
             } else if (menuOption == 2) {
                 memberManagementMenu();
-            } else if (menuOption != 0){
+            } else if (menuOption == 3){
+                trainingAndCompetitionMenu(activeDisciplinesClub, dataGetTopFive);
+            }
+
+            else if (menuOption != 0){
                 System.out.println("invalid input");
             }
         } while (menuOption != 0);
@@ -62,7 +68,7 @@ public class UI {
         } while (menuOption != 0);
     }
 
-    public static void trainingAndCompetitionMenu(ActiveDisciplinesClub activeDisciplinesClub) {
+    public static void trainingAndCompetitionMenu(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive) {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         String menuOption;
@@ -74,20 +80,14 @@ public class UI {
             menuOption = scanner.nextLine();
 
             if (menuOption.equals("1")) {
-
                 Data.addTraining(new Training(activeDisciplinesClub.inputDiscipline(), Data.receiveTeam()));
                 loop = false;
-
             } else if (menuOption.equals("2")) {
-                // insert method for creating competition here
+                Data.getCompetitions().add(new Competition(activeDisciplinesClub.inputDiscipline(), activeDisciplinesClub, dataGetTopFive));
                 loop = false;
             } else {
                 System.out.println("Invalid input. Try again.");
             }
-
         }
-
-
-
     }
 }
