@@ -12,6 +12,16 @@ public class Team {
         this.trainer = trainer;
     }
 
+    public void viewRoster() {
+        if (roster.size() == 0) {
+            System.out.println("No swimmers on the " + teamName + " yet.");
+        } else {
+            for (int i = 0; i < roster.size(); i++) {
+                System.out.println("Name: " + roster.get(i).getName()+ "\nAge: " + roster.get(i).getAge());
+            }
+        }
+    }
+
     public ArrayList<CompetitiveSwimmer> getRoster() {
         return roster;
     }

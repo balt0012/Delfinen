@@ -1,17 +1,18 @@
 import java.util.Scanner;
 
-public class UI {
-    private ActiveDisciplinesClub activeDisciplinesClub;
+public class Controller {
+    private ActiveDisciplinesClub activeDisciplinesClub = new ActiveDisciplinesClub();
+    private DataGetTopFive dataGetTopFive = new DataGetTopFive();
 
 
-    public static void programSetup() {
+    public void programSetup() {
         // team and coaches should be created first before main menu.
         Data.addCoaches();
-        Data.setJuniorTeam(Team.createTeam("Junior Team"));
-        Data.setSeniorTeam(Team.createTeam("Senior Team"));
+        Data.setJuniorTeam(Team.createTeam("Junior team"));
+        Data.setSeniorTeam(Team.createTeam("Senior team"));
     }
 
-    public static void mainMenu(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive){
+    public void mainMenu(){
         Scanner scanner = new Scanner(System.in);
         int menuOption;
         do {
@@ -31,7 +32,7 @@ public class UI {
         } while (menuOption != 0);
     }
 
-    public static void economicMenu(){
+    public void economicMenu(){
         Scanner scanner = new Scanner(System.in);
         int menuOption;
         do {
@@ -49,41 +50,50 @@ public class UI {
         } while (menuOption != 0);
     }
 
-    public static void memberManagementMenu(){
+    public void memberManagementMenu(){
         Scanner scanner = new Scanner(System.in);
         int menuOption;
         do {
-            System.out.println("what do you want to do? (1.add member 2.edit member 3.add result )");
+            System.out.println("what do you want to do?\n1 - create member.\n2 - Edit member.\n3 - Create competitive swimmer.\n4 - view team rosters\n 0 - Back to Main menu.");
             menuOption = scanner.nextInt();
             if (menuOption == 1) {
                 Member.createMember();
-
             } else if (menuOption == 2){
                 Member.editMember();
-            } else if (menuOption == 3){
-
+            } else if (menuOption == 3) {
+                CompetitiveSwimmer competitiveSwimmer = CompetitiveSwimmer.createCompetitiveSwimmer();
+                competitiveSwimmer.addSwimmerToDiscipline(activeDisciplinesClub);
+            } else if (menuOption == 4){
+                System.out.println("Junior team:");
+                Data.getJuniorTeam().viewRoster();
+                System.out.println("Senior team");
+                Data.getSeniorTeam().viewRoster();
             } else if (menuOption != 0){
                 System.out.println("invalid input");
             }
         } while (menuOption != 0);
     }
 
-    public static void trainingAndCompetitionMenu(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive) {
+    public void trainingAndCompetitionMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         String menuOption;
 
-        System.out.println("What would you like to do?\n1 - Register Training\n2 - Register Competition");
+        System.out.println("What would you like to do?\n1 - Register Training\n2 - Register Competition\n0 - Back to main menu.");
 
         while (loop) {
             System.out.println(">");
             menuOption = scanner.nextLine();
 
             if (menuOption.equals("1")) {
-                Data.addTraining(new Training(activeDisciplinesClub.inputDiscipline(), Data.receiveTeam()));
-                loop = false;
+                Training training = new Training(activeDisciplinesClub.inputDiscipline(), Data.receiveTeam());
+                Data.addTraining(training);
+                training.showTraining();
             } else if (menuOption.equals("2")) {
-                Data.getCompetitions().add(new Competition(activeDisciplinesClub.inputDiscipline(), activeDisciplinesClub, dataGetTopFive));
+                Competition competition = new Competition(activeDisciplinesClub.inputDiscipline(), activeDisciplinesClub, dataGetTopFive);
+                Data.getCompetitions().add(competition);
+                competition.showSwimmers();
+            } else if (menuOption.equals("0")) {
                 loop = false;
             } else {
                 System.out.println("Invalid input. Try again.");

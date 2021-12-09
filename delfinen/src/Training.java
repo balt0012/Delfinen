@@ -28,6 +28,12 @@ public class Training {
         }
     }
 
+    public void showTraining() {
+        for (int i = 0; i < results.size(); i++) {
+            System.out.println("Discipline: " + discipline + "\nSwimmer name: " + results.get(i).getCompetitiveSwimmer().getName() + "\nTime: " + results.get(i).getTime());
+        }
+    }
+
     public String getDiscipline() {
         return discipline;
     }

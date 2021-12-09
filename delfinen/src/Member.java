@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Member {
     private double priceYearly;
-    private boolean priceYearlyIsPaid;
+    private boolean priceYearlyIsPaid = false;
     private boolean isActive;
     private int age;
     private final String memberID;
@@ -62,18 +62,21 @@ public class Member {
         return priceYearlyIsPaid;
     }
 
-    public String resultsToString(){
+    /*public String resultsToString(){
         StringBuilder resultString = new StringBuilder();
         for (int i = 0; i < results.toArray().length; i++) {
             resultString.append(results.toArray()[i] + ",");
         }
         return resultString.toString();
     }
+    */
+
 
     public static void createMember(){
         InputCreateMember inputCreateMember = new InputCreateMember();
         Member member = new Member(inputCreateMember.receiveAge(), GenerateID.generateID(), inputCreateMember.receiveActiveStatus(), inputCreateMember.receiveName());
-        Data.addToMembers(member);
+        Data.getMembers().add(member);
+       // Data.addToMembers(member);
     }
 
     public static void editMember(){
@@ -93,7 +96,8 @@ public class Member {
 
     @Override
     public String toString() {
-        return priceYearly + "\n" + priceYearlyIsPaid + "\n" + isActive + "\n" + age + "\n" + memberID + "\n" + name + "\n" + isPricePaid + "\n" + resultsToString();
+        return priceYearly + "\n" + priceYearlyIsPaid + "\n" + isActive + "\n" + age + "\n" + memberID + "\n" + name + "\n" + isPricePaid;
+        //resultsToString()
     }
 
 }

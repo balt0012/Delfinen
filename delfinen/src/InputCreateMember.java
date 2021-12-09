@@ -8,11 +8,14 @@ public class InputCreateMember {
         boolean loop = true;
         int userInputAge = 0;
 
+        System.out.println("Please enter the age of the member");
+
         while (loop) {
 
             try {
                 System.out.println(">");
                 userInputAge = scanner.nextInt();
+                scanner.nextLine();
 
                 if (userInputAge < 0) {
                     System.out.println("Error. Age can't be below zero.");
@@ -21,12 +24,14 @@ public class InputCreateMember {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error. Age must be a number with no decimals");
+                scanner.next();
             }
         }
        return userInputAge;
     }
 
     public String receiveName() {
+        System.out.println("What is the name of the Member");
         return scanner.nextLine();
     }
 

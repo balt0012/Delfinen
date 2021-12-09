@@ -38,9 +38,6 @@ public class Data {
         }
     }
 
-    public static void addCompetitiveSwimmer(CompetitiveSwimmer competitiveSwimmer) {
-        competitiveSwimmers.add(competitiveSwimmer);
-    }
 
     public static int getExpectedIncome(){
         int expectedIncome = 0;
@@ -138,7 +135,6 @@ public class Data {
 
 
     public static ArrayList<Member> getMembers() {
-
         return members;
     }
 

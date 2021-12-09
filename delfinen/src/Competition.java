@@ -16,16 +16,29 @@ public class Competition {
     }
 
     public void addCompetitors(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive){
+
         String discipline = activeDisciplinesClub.inputDiscipline();
         ArrayList<CompetitiveSwimmer> activeSwimmerInDiscipline = dataGetTopFive.getCompetitiveSwimmersInDiscipline(discipline, Data.getCompetitiveSwimmers());
-        competitors = dataGetTopFive.findTop5InDiscipline(discipline, activeSwimmerInDiscipline);
+        if (activeSwimmerInDiscipline.size() < 5) {
+            System.out.println("Error. Not enough active swimmers in this discipline to enter competitions.");
+        } else {
+            competitors = dataGetTopFive.findTop5InDiscipline(discipline, activeSwimmerInDiscipline);
+        }
 
     }
-    public void addResults(){
+    public void addResults() {
         for (int i = 0; i < competitors.size(); i++) {
             results.add(new Result(competitors.get(i), discipline));
         }
+    }
 
+    public void showSwimmers() {
+
+        System.out.println("Swimmers for this competition:");
+
+        for (int i = 0; i < competitors.size(); i++) {
+            System.out.println(competitors.get(i).getName());
+        }
     }
 }
 
