@@ -23,7 +23,7 @@ public class Controller {
             } else if (menuOption == 2) {
                 memberManagementMenu();
             } else if (menuOption == 3){
-                trainingAndCompetitionMenu(activeDisciplinesClub, dataGetTopFive);
+                trainingAndCompetitionMenu();
             }
 
             else if (menuOption != 0){
