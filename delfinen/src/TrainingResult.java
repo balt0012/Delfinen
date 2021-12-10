@@ -1,4 +1,5 @@
 public class TrainingResult {
+    // Lavet af Ella.
     private String discipline;
     private CompetitiveSwimmer competitiveSwimmer;
     private float time;

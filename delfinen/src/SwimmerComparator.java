@@ -1,6 +1,7 @@
 import java.util.Comparator;
 
 public class SwimmerComparator implements Comparator<TrainingResult> {
+    // Lavet af Carl
 
     @Override
     public int compare(TrainingResult o1, TrainingResult o2) {

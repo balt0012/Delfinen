@@ -3,6 +3,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Team {
+    // lavet af Ella.
     private final ArrayList<CompetitiveSwimmer> roster = new ArrayList<>();
     private String teamName;
     private Trainer trainer;
@@ -22,21 +23,6 @@ public class Team {
         }
     }
 
-    public ArrayList<CompetitiveSwimmer> getRoster() {
-        return roster;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-    public void addSwimmerToTeam(CompetitiveSwimmer competitiveSwimmer) {
-        roster.add(competitiveSwimmer);
-    }
 
     public static Team createTeam(String teamName) {
         Scanner scanner = new Scanner(System.in);
@@ -66,4 +52,21 @@ public class Team {
         }
         return new Team(teamName, trainer);
     }
+
+    public ArrayList<CompetitiveSwimmer> getRoster() {
+        return roster;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void addSwimmerToTeam(CompetitiveSwimmer competitiveSwimmer) {
+        roster.add(competitiveSwimmer);
+    }
+
 }

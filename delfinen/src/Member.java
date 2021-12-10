@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Member {
+    // Lavet af Carl.
     private double priceYearly;
     private boolean priceYearlyIsPaid = false;
     private boolean isActive;
@@ -9,7 +10,6 @@ public class Member {
     private final String memberID;
     private String name;
     private boolean isPricePaid;
-    private ArrayList<Result> results = new ArrayList<>();
 
     public Member(int age, String memberID, boolean isActive, String name) {
         this.age = age;
@@ -32,34 +32,6 @@ public class Member {
         } else if (age > 60) {
             priceYearly = 1600*0.75;
         }
-    }
-
-    public boolean GetIsActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean status) {
-        isActive = status;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getMemberID() {
-        return memberID;
-    }
-
-    public double getPriceYearly() {
-        return priceYearly;
-    }
-
-    public boolean PriceYearlyIsPaid() {
-        return priceYearlyIsPaid;
     }
 
     /*public String resultsToString(){
@@ -91,6 +63,34 @@ public class Member {
 
     public void setPriceYearlyIsPaid(boolean paymentStatus) {
         this.priceYearlyIsPaid = paymentStatus;
+    }
+
+    public boolean GetIsActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean status) {
+        isActive = status;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getMemberID() {
+        return memberID;
+    }
+
+    public double getPriceYearly() {
+        return priceYearly;
+    }
+
+    public boolean PriceYearlyIsPaid() {
+        return priceYearlyIsPaid;
     }
 
 

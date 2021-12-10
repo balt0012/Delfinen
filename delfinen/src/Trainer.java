@@ -3,10 +3,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Trainer
+    // Lavet af Ella
 {
     //We have ONE trainer, we are cheap
     private String trainerName;
-    private ArrayList<Team> teams = new ArrayList<>();
     private String trainerID;
 
     public Trainer(String trainerName)

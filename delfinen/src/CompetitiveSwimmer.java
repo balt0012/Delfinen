@@ -1,12 +1,11 @@
 import java.util.*;
 
 public class CompetitiveSwimmer extends Member {
+    // Lavet af carl.
     private final ArrayList<Competition> competitions = new ArrayList<>();
     private final ArrayList<TrainingResult> trainingTimes = new ArrayList<>();
     private final ArrayList<String> activeDisciplinesSwimmer = new ArrayList<>();
-    private Trainer trainer;
-    private String coachID;
-    private String team;
+
 
     public CompetitiveSwimmer(int age, String memberID, boolean isActive, String name) {
         super(age, memberID, isActive, name);
@@ -66,10 +65,10 @@ public class CompetitiveSwimmer extends Member {
 
             String discipline = activeDisciplinesClub.inputDiscipline();
 
-            if (swimmerIsActiveInDiscipline(discipline) && activeDisciplinesClub.validateDiscipline(discipline)) {
+            if (!swimmerIsActiveInDiscipline(discipline) && activeDisciplinesClub.validateDiscipline(discipline)) {
                 activeDisciplinesSwimmer.add(discipline);
                 swimmerIsAdded = true;
-            } else if (!swimmerIsActiveInDiscipline(discipline)) {
+            } else if (swimmerIsActiveInDiscipline(discipline)) {
                 System.out.println("This swimmer is already active in that discipline.");
             } else if (!activeDisciplinesClub.validateDiscipline(discipline)) {
                 System.out.println("Invalid input. Discipline doesnt exists.");

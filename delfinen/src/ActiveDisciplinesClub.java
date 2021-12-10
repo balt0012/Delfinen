@@ -3,6 +3,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class ActiveDisciplinesClub {
+    // lavet af Carl.
     private ArrayList<String> clubDisciplines = new ArrayList<>();
 
 

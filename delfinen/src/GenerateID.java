@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class GenerateID {
+    // lavet af Carl.
 
     public static String generateID() {
         // can be used for coaches and members.

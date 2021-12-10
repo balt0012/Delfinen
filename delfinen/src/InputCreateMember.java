@@ -13,7 +13,7 @@ public class InputCreateMember {
         while (loop) {
 
             try {
-                System.out.println(">");
+                System.out.print(">");
                 userInputAge = scanner.nextInt();
                 scanner.nextLine();
 
@@ -31,7 +31,7 @@ public class InputCreateMember {
     }
 
     public String receiveName() {
-        System.out.println("What is the name of the Member");
+        System.out.println("What is the name of the Member?");
         return scanner.nextLine();
     }
 

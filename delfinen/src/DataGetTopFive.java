@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DataGetTopFive {
+    // Lavet af Carl.
     SwimmerComparator swimmerComparator = new SwimmerComparator();
 
     public ArrayList<CompetitiveSwimmer> findTop5InDiscipline(String discipline, ArrayList<CompetitiveSwimmer> swimmersActiveInDiscipline) {

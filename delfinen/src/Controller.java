@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Controller {
+    // Lavet af Balthazar
     private ActiveDisciplinesClub activeDisciplinesClub = new ActiveDisciplinesClub();
     private DataGetTopFive dataGetTopFive = new DataGetTopFive();
 
@@ -22,11 +23,10 @@ public class Controller {
                 economicMenu();
             } else if (menuOption == 2) {
                 memberManagementMenu();
-            } else if (menuOption == 3){
+            } else if (menuOption == 3) {
                 trainingAndCompetitionMenu();
             }
-
-            else if (menuOption != 0){
+            else if (menuOption != 0) {
                 System.out.println("invalid input");
             }
         } while (menuOption != 0);
@@ -86,6 +86,7 @@ public class Controller {
             menuOption = scanner.nextLine();
 
             if (menuOption.equals("1")) {
+                System.out.println("Please enter the discipline for this training:");
                 Training training = new Training(activeDisciplinesClub.inputDiscipline(), Data.receiveTeam());
                 Data.addTraining(training);
                 training.showTraining();

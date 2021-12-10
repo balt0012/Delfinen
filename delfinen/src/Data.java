@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Data {
+    // Lavet af Balthazar
     private static ArrayList<Member> members = new ArrayList<>();
     private static ArrayList<CompetitiveSwimmer> competitiveSwimmers = new ArrayList<>();
     private static Team seniorTeam;
@@ -68,7 +69,7 @@ public class Data {
         System.out.println("Please enter the team:\n 1 - Junior Team\n 2 - Senior Team");
 
         while (loop) {
-            System.out.println(">");
+            System.out.print(">");
             userInputTeam = scanner.nextLine();
 
             if (userInputTeam.equals("1")) {
@@ -129,19 +130,6 @@ public class Data {
         }
     }
 
-    public static void addTraining(Training training) {
-        trainings.add(training);
-    }
-
-
-    public static ArrayList<Member> getMembers() {
-        return members;
-    }
-
-    public static void setMembers(ArrayList<Member> members) {
-        Data.members = members;
-    }
-
     public static void addCoaches() {
         boolean loop = true;
         int numberOfCoachesToAdd = 0;
@@ -149,7 +137,7 @@ public class Data {
         System.out.println("Please enter the amount of coaches you would like to add");
 
         while (loop) {
-            System.out.println(">");
+            System.out.print(">");
             try {
                 numberOfCoachesToAdd = scanner.nextInt();
                 loop = false;
@@ -163,14 +151,6 @@ public class Data {
         }
     }
 
-    public static ArrayList<Trainer> getTrainers() {
-        return trainers;
-    }
-
-    public static ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers() {
-        return competitiveSwimmers;
-    }
-
     public static void addMemberToTeam(Team seniorTeam, Team juniorTeam, CompetitiveSwimmer competitiveSwimmer) {
         if (competitiveSwimmer.getAge() > 18 ) {
             seniorTeam.getRoster().add(competitiveSwimmer);
@@ -179,7 +159,11 @@ public class Data {
         }
     }
 
+    public static void addTraining(Training training) {
+        trainings.add(training);
+    }
 
+    public static ArrayList<Member> getMembers() { return members; }
 
     public static void setSeniorTeam(Team team) {
         seniorTeam = team;
@@ -199,5 +183,17 @@ public class Data {
 
     public static ArrayList<Competition> getCompetitions() {
         return competitions;
+    }
+
+    public static ArrayList<Trainer> getTrainers() {
+        return trainers;
+    }
+
+    public static ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers() {
+        return competitiveSwimmers;
+    }
+
+    public static void setMembers(ArrayList<Member> members) {
+        Data.members = members;
     }
 }

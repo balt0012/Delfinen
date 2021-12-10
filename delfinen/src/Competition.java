@@ -2,6 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Competition {
+    // Lavet af Ella
     private String discipline;
     private ArrayList<CompetitiveSwimmer> competitors;
     private ArrayList<Result> results = new ArrayList<>();
