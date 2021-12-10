@@ -2,24 +2,36 @@ import java.util.ArrayList;
 
 public class Training {
     String discipline;
-    int time;
     Team team;
-    ArrayList<Result> result; // recycle that class maybe? Otherwise, create result class for training.
+    ArrayList<TrainingResult> results;
 
-    public Training(String discipline, Team team, int time) {
+    public Training(String discipline, Team team) {
         this.discipline = discipline;
         this.team = team;
-        this.time = time;
+        registerResultForSwimmer();
     }
 
     public void registerResultForSwimmer() {
-        for (int i = 0; i < team.getRoster().size(); i++) {
+        UserInputTime userInputTime = new UserInputTime();
 
-            // create trainingResult object here and add to result Arraylist.
+        for (int i = 0; i < team.getRoster().size(); i++) {
+            // iterates through the team rooster. if the swimmer is active in the discipline being trained
+            // then the user will be able to input individual times. The method will then create the objects and add them to results arraylist and an TrainingResult arraylist
+            // within the respective competitive swimmer object.
+
+            if (team.getRoster().get(i).swimmerIsActiveInDiscipline(discipline)) {
+                System.out.println("Please enter the time for " + team.getRoster().get(i).getName() + " (ID: " + team.getRoster().get(i).getMemberID());
+                TrainingResult trainingResult = new TrainingResult(discipline, team.getRoster().get(i), userInputTime.receiveTime());
+                results.add(trainingResult);
+                team.getRoster().get(i).addTrainingResult(trainingResult);
+            }
         }
     }
-    public int getTime() {
-        return time;
+
+    public void showTraining() {
+        for (int i = 0; i < results.size(); i++) {
+            System.out.println("Discipline: " + discipline + "\nSwimmer name: " + results.get(i).getCompetitiveSwimmer().getName() + "\nTime: " + results.get(i).getTime());
+        }
     }
 
     public String getDiscipline() {

@@ -1,30 +1,43 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Competition {
+    private String discipline;
+    private ArrayList<CompetitiveSwimmer> competitors;
+    private ArrayList<Result> results = new ArrayList<>();
 
-    private String name;
-    private Member[] competitors;
-    private Result[] results;
-    private int competitionCounter;
-    private int resultCounter;
 
-    public Competition(String name, double competitionTime)
+    public Competition(String discipline, ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive)
     {
-        this.name = name;
-        this.competitors = new Member[5];
-        this.results = new Result[5];
-        this.competitionCounter  = 0;
-        this.resultCounter = 0;
+        this.discipline = discipline;
+        addCompetitors(activeDisciplinesClub, dataGetTopFive);
+        addResults();
+
     }
 
-    public void addCompetitor(Member competitor){
-        if(competitionCounter <= 4){
-            competitors[competitionCounter] = competitor;
-            competitionCounter++;
+    public void addCompetitors(ActiveDisciplinesClub activeDisciplinesClub, DataGetTopFive dataGetTopFive){
+
+        String discipline = activeDisciplinesClub.inputDiscipline();
+        ArrayList<CompetitiveSwimmer> activeSwimmerInDiscipline = dataGetTopFive.getCompetitiveSwimmersInDiscipline(discipline, Data.getCompetitiveSwimmers());
+        if (activeSwimmerInDiscipline.size() < 5) {
+            System.out.println("Error. Not enough active swimmers in this discipline to enter competitions.");
+        } else {
+            competitors = dataGetTopFive.findTop5InDiscipline(discipline, activeSwimmerInDiscipline);
+        }
+
+    }
+    public void addResults() {
+        for (int i = 0; i < competitors.size(); i++) {
+            results.add(new Result(competitors.get(i), discipline));
         }
     }
-    public void addResult(Result result){
-        if(resultCounter <= 4){
-            results[resultCounter] = result;
-            resultCounter++;
+
+    public void showSwimmers() {
+
+        System.out.println("Swimmers for this competition:");
+
+        for (int i = 0; i < competitors.size(); i++) {
+            System.out.println(competitors.get(i).getName());
         }
     }
 }
