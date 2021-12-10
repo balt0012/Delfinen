@@ -45,6 +45,7 @@ public class Data {
 
     public static int getExpectedIncome(){
         int expectedIncome = 0;
+        members = getMembers();
         for(Member member : members){
             if (!member.PriceYearlyIsPaid()){
                 expectedIncome += member.getPriceYearly();
@@ -55,6 +56,7 @@ public class Data {
 
     public static int getMembersInDebt(){
         int membersInDebt = 0;
+        members = getMembers();
         for(Member member : members){
             if (!member.PriceYearlyIsPaid()){
                 membersInDebt++;

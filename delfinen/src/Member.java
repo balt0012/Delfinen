@@ -166,7 +166,6 @@ public class Member {
         Data.addToMembers(memberToEdit);
     }
 
-
     @Override
     public String toString() {
         return priceYearly + "\n" + priceYearlyIsPaid + "\n" + isActive + "\n" + age + "\n" + memberID + "\n" + name + "\n" + isPricePaid + "\n" + resultsToString();
