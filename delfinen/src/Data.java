@@ -1,10 +1,10 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Data {
@@ -34,7 +34,6 @@ public class Data {
         }
         try {
             FileWriter writer = new FileWriter("members/" + newMember.getName() + ".csv");
-            //toString is to be added
             writer.write(newMember.toString());
             writer.close();
             System.out.println("new member has been added!");
@@ -63,81 +62,6 @@ public class Data {
         }
         return membersInDebt;
     }
-
-    public static Team receiveTeam() {
-        Scanner scanner = new Scanner(System.in);
-        boolean loop = true;
-        String userInputTeam;
-        Team team = null;
-
-        System.out.println("Please enter the team:\n 1 - Junior Team\n 2 - Senior Team");
-
-        while (loop) {
-            System.out.println(">");
-            userInputTeam = scanner.nextLine();
-
-            if (userInputTeam.equals("1")) {
-                team = juniorTeam;
-                loop = false;
-            } else if (userInputTeam.equals("2")) {
-                team = seniorTeam;
-                loop = false;
-            } else {
-                System.out.println("Invalid input. Try again.");
-            }
-        }
-        return team;
-    }
-
-    public static String receiveMemberID() {
-        Scanner scanner = new Scanner(System.in);
-        boolean loop = true;
-        boolean matchIsFound = false;
-        String userInputID = null;
-
-        System.out.println("Please enter the ID of the customer: ");
-
-        for (int i = 0; i < members.size(); i++) {
-            System.out.println("Name: " + members.get(i).getName() + " ID: " + members.get(i).getMemberID());
-        }
-        while (loop) {
-            System.out.print(">");
-            userInputID = scanner.nextLine();
-
-            for (int i = 0; i < members.size(); i++) {
-                if (userInputID.equals(members.get(i).getMemberID())) {
-                    matchIsFound = true;
-                    loop = false;
-                    break;
-                }
-            }
-            if (!matchIsFound) {
-                System.out.println("Invalid input. Try again.");
-            }
-        }
-        return userInputID;
-    }
-
-    public static void registerPayment(String memberID) {
-        boolean matchIsFound = false;
-
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getMemberID().equals(memberID)) {
-                matchIsFound = true;
-                members.get(i).setPriceYearlyIsPaid(true);
-                System.out.println("Payment on " + members.get(i).getPriceYearly() + " dkk from " + members.get(i).getName() + "has been registered.");
-                break;
-            }
-        }
-        if (!matchIsFound) {
-            System.out.println("Error. Invalid memberID.");
-        }
-    }
-
-    public static void addTraining(Training training) {
-        trainings.add(training);
-    }
-
 
     public static ArrayList<Member> getMembers() {
         int memberAmount = 0;
@@ -201,6 +125,38 @@ public class Data {
         setMembers(newMembers);
 
         return members;
+    }
+
+    public static ArrayList<String> getNames(){
+        int memberAmount = 0;
+        ArrayList<String> memberNames = new ArrayList<>();
+        try{
+            File file = new File("members/names.csv");
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()){
+                memberAmount ++;
+                String name = sc.nextLine();
+                //System.out.println(name);
+            }
+            sc = new Scanner(file);
+            for (int i = 0; i < memberAmount; i++) {
+                memberNames.add(sc.nextLine());
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("Could not find names");
+        }
+        return memberNames;
+    }
+
+    public static void setNames(String names){
+        try {
+            FileWriter writer = new FileWriter("members/names.csv");
+            writer.write(names);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
     }
 
     public static void setMembers(ArrayList<Member> members) {
