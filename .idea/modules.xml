@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Delfinen.iml" filepath="$PROJECT_DIR$/.idea/Delfinen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/delfinen/delfinen.iml" filepath="$PROJECT_DIR$/delfinen/delfinen.iml" />
       <module fileurl="file://$PROJECT_DIR$/Delfinen.iml" filepath="$PROJECT_DIR$/Delfinen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/delfinen/delfinen.iml" filepath="$PROJECT_DIR$/delfinen/delfinen.iml" />
     </modules>
   </component>
 </project>
