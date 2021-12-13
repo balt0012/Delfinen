@@ -17,7 +17,7 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
         int menuOption;
         do {
-            System.out.println("what do you want to do? (1.economy\n2.member management\n3.Training and Competition management)");
+            System.out.println("what do you want to do? (1.economy 2.member management 3. Training and Competition management)");
             menuOption = scanner.nextInt();
             if (menuOption == 1) {
                 economicMenu();
