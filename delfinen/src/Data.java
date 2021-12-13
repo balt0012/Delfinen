@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Data {
-    // Lavet af Balthazarr
+    // Lavet af Balthazar
     private static ArrayList<Member> members = new ArrayList<>();
     private static ArrayList<CompetitiveSwimmer> competitiveSwimmers = new ArrayList<>();
     private static Team seniorTeam;
@@ -29,7 +29,6 @@ public class Data {
         }
         try {
             FileWriter writer = new FileWriter("members/" + newMember.getName() + ".csv");
-            //toString is to be added
             writer.write(newMember.toString());
             writer.close();
             System.out.println("new member has been added!");
